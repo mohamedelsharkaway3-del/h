@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>SHARK — Mohamed El Sharkaway | Art Director Portfolio</title>
-  <!-- Google Fonts: Luxury serif + modern sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Mohamed El Sharkaway — Photographer & Designer Portfolio</title>
+  <!-- Google Fonts: Poppins + Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -14,23 +14,25 @@
     }
 
     :root {
-      --bg: #050505;
-      --bg-card: #0c0c0c;
-      --border: rgba(197, 160, 40, 0.2);
-      --border-hover: rgba(197, 160, 40, 0.5);
-      --gold: #C5A028;
-      --gold-light: #e0b84d;
-      --text: #e8e8e8;
-      --text-dim: #a0a0a0;
-      --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      --bg-dark: #0b1120;
+      --bg-card: #111827;
+      --navy: #1e3a5f;
+      --navy-light: #2d4a7a;
+      --steel: #4a5568;
+      --steel-light: #718096;
+      --gold-accent: #c9a03d;
+      --text-light: #f3f4f6;
+      --text-dim: #9ca3af;
+      --border-color: #1f2a3e;
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* custom cursor */
@@ -43,25 +45,25 @@
     .cursor-dot {
       width: 6px;
       height: 6px;
-      background: var(--gold);
+      background: var(--gold-accent);
       border-radius: 50%;
       transform: translate(-50%, -50%);
     }
     .cursor-ring {
       width: 36px;
       height: 36px;
-      border: 1px solid var(--gold);
+      border: 1px solid var(--gold-accent);
       border-radius: 50%;
-      opacity: 0.35;
+      opacity: 0.4;
       transform: translate(-50%, -50%);
-      transition: 0.2s ease-out;
+      transition: 0.15s ease-out;
     }
 
-    /* splash screen */
+    /* splash */
     #splash {
       position: fixed;
       inset: 0;
-      background: #000;
+      background: #030712;
       z-index: 10000;
       display: flex;
       align-items: center;
@@ -75,36 +77,95 @@
       visibility: hidden;
     }
     .splash-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem;
-      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
       letter-spacing: 6px;
-      color: var(--gold);
-    }
-    .splash-logo span {
-      color: white;
+      background: linear-gradient(135deg, #fff, var(--gold-accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     .splash-line {
       width: 80px;
-      height: 1px;
-      background: var(--gold);
+      height: 2px;
+      background: var(--gold-accent);
       transform: scaleX(0);
-      animation: lineGrow 1.2s ease forwards;
+      animation: lineGrow 1s ease forwards;
     }
     @keyframes lineGrow {
       to { transform: scaleX(1); }
     }
 
-    /* hamburger menu (mobile) */
+    /* navigation */
+    .main-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .logo h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .logo span {
+      color: var(--gold-accent);
+    }
+    .logo .sub {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--steel-light);
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--gold-accent);
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--navy-light);
+      padding: 6px 18px;
+      border-radius: 30px;
+      color: var(--gold-accent);
+      cursor: pointer;
+      font-family: monospace;
+      transition: 0.2s;
+    }
+    .lang-btn:hover {
+      background: rgba(201,160,61,0.1);
+      border-color: var(--gold-accent);
+    }
+
+    /* mobile menu */
     .menu-btn {
       display: none;
       background: none;
       border: none;
       cursor: pointer;
-      z-index: 1100;
       position: fixed;
       top: 24px;
       right: 24px;
+      z-index: 1100;
       width: 40px;
       height: 40px;
       flex-direction: column;
@@ -115,17 +176,8 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: var(--gold);
+      background: var(--gold-accent);
       transition: 0.3s;
-    }
-    .menu-btn.active span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
-    }
-    .menu-btn.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-btn.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
     }
     .mobile-nav {
       position: fixed;
@@ -133,267 +185,195 @@
       right: -100%;
       width: 280px;
       height: 100vh;
-      background: rgba(8,8,8,0.98);
+      background: #0f172a;
       backdrop-filter: blur(20px);
       z-index: 1050;
-      padding: 80px 32px;
+      padding: 100px 32px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border-left: 1px solid var(--border);
+      gap: 28px;
+      transition: 0.4s;
+      border-left: 1px solid var(--border-color);
     }
-    .mobile-nav.open {
-      right: 0;
-    }
+    .mobile-nav.open { right: 0; }
     .mobile-nav a {
-      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      color: var(--text-light);
       font-size: 1.2rem;
-      text-decoration: none;
-      color: var(--text);
-      letter-spacing: 1px;
-      transition: 0.2s;
-    }
-    .mobile-nav a:hover {
-      color: var(--gold);
-      transform: translateX(-6px);
     }
 
-    /* main navigation (desktop) */
-    .main-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 24px 56px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      background: rgba(5,5,5,0.7);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
+    @media (max-width: 768px) {
+      .main-nav { display: none; }
+      .menu-btn { display: flex; }
+      section { padding: 80px 24px; }
     }
-    .logo h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-    }
-    .logo .sub {
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      color: var(--gold);
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
-      transition: 0.2s;
-    }
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-    .lang-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      padding: 6px 16px;
-      border-radius: 40px;
-      color: var(--gold);
-      cursor: pointer;
-      font-family: 'Inter', monospace;
-      font-size: 0.8rem;
-      transition: 0.2s;
-    }
-    .lang-btn:hover {
-      border-color: var(--gold);
-      background: rgba(197,160,40,0.1);
-    }
-
-    /* reveal animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* hero fullscreen */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      padding: 120px 24px 80px;
-    }
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .hero-label {
-      font-size: 0.8rem;
-      letter-spacing: 4px;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 10vw, 6rem);
-      font-weight: 600;
-      line-height: 1.1;
-      margin-bottom: 24px;
-    }
-    .hero-title span {
-      color: var(--gold);
-    }
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--text-dim);
-      max-width: 600px;
-      margin: 0 auto 40px;
-    }
-    .hero-btn {
-      display: inline-block;
-      background: transparent;
-      border: 1px solid var(--gold);
-      padding: 14px 36px;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 2px;
-      transition: 0.3s;
-    }
-    .hero-btn:hover {
-      background: var(--gold);
-      color: #000;
+    @media (min-width: 769px) {
+      .mobile-nav, .menu-btn { display: none; }
     }
 
     /* sections */
     section {
-      padding: 100px 56px;
-      max-width: 1400px;
+      padding: 100px 48px;
+      max-width: 1280px;
       margin: 0 auto;
     }
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
       margin-bottom: 16px;
     }
+    .section-title span {
+      color: var(--gold-accent);
+    }
     .section-sub {
-      color: var(--gold);
-      letter-spacing: 2px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
+      color: var(--gold-accent);
+      letter-spacing: 4px;
+      font-size: 0.8rem;
       margin-bottom: 48px;
+      text-transform: uppercase;
     }
 
-    /* about grid */
+    /* hero */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .hero h1 .gold {
+      color: var(--gold-accent);
+    }
+    .hero p {
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 24px auto;
+    }
+    .hero-btn {
+      display: inline-block;
+      border: 1px solid var(--gold-accent);
+      padding: 12px 32px;
+      color: var(--gold-accent);
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: 0.3s;
+      margin-top: 16px;
+    }
+    .hero-btn:hover {
+      background: var(--gold-accent);
+      color: #0b1120;
+    }
+
+    /* about with photo */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px;
-      align-items: start;
+      align-items: center;
+    }
+    .about-photo img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 12px;
+      border: 2px solid var(--gold-accent);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
     }
     .bio-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 32px;
-      transition: 0.3s;
-    }
-    .bio-card:hover {
-      border-color: var(--gold);
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
     }
     .skill-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       margin-top: 24px;
     }
     .skill {
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      font-size: 0.7rem;
-      letter-spacing: 1px;
+      background: rgba(30,58,95,0.4);
+      border: 1px solid var(--navy-light);
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 0.75rem;
     }
 
     /* portfolio tabs */
     .port-tabs {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 12px;
       margin-bottom: 48px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-color);
       padding-bottom: 12px;
     }
     .port-tab {
       background: none;
       border: none;
       color: var(--text-dim);
-      font-family: 'Inter', monospace;
-      padding: 8px 20px;
+      font-family: 'Poppins', sans-serif;
+      padding: 8px 24px;
       cursor: pointer;
       transition: 0.2s;
+      font-weight: 500;
     }
     .port-tab.active {
-      color: var(--gold);
-      border-bottom: 2px solid var(--gold);
+      color: var(--gold-accent);
+      border-bottom: 2px solid var(--gold-accent);
     }
     .port-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
+      gap: 28px;
     }
     .port-item {
       background: var(--bg-card);
-      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
       transition: 0.3s;
       cursor: pointer;
-      overflow: hidden;
     }
     .port-item:hover {
       transform: translateY(-6px);
-      border-color: var(--gold);
+      border-color: var(--gold-accent);
     }
     .port-thumb {
       aspect-ratio: 4/5;
-      position: relative;
       overflow: hidden;
     }
     .port-thumb img, .port-thumb video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s;
+      transition: transform 0.4s;
     }
     .port-item:hover .port-thumb img,
     .port-item:hover .port-thumb video {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
     .port-info {
       padding: 16px;
     }
     .port-cat {
+      color: var(--gold-accent);
       font-size: 0.7rem;
-      color: var(--gold);
       letter-spacing: 1px;
     }
     .port-title {
-      font-size: 1rem;
-      font-weight: 500;
+      font-weight: 600;
       margin-top: 6px;
     }
 
-    /* case studies + testimonials */
+    /* case & testimonials */
     .case-grid, .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -401,44 +381,31 @@
     }
     .case-card, .testimonial-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
+      border-radius: 12px;
       padding: 24px;
-    }
-    .testimonial-card i {
-      color: var(--gold);
-      font-size: 2rem;
-      opacity: 0.5;
+      border: 1px solid var(--border-color);
     }
 
-    /* footer */
     footer {
-      padding: 60px 56px 40px;
-      border-top: 1px solid var(--border);
       text-align: center;
-      font-size: 0.8rem;
+      padding: 48px;
+      border-top: 1px solid var(--border-color);
       color: var(--text-dim);
     }
 
-    /* admin dot */
+    /* admin */
     .admin-dot {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      width: 12px;
-      height: 12px;
-      background: var(--gold);
+      width: 14px;
+      height: 14px;
+      background: var(--gold-accent);
       border-radius: 50%;
       cursor: pointer;
       z-index: 2000;
-      opacity: 0.5;
-      transition: 0.2s;
+      opacity: 0.6;
     }
-    .admin-dot:hover {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-
-    /* admin overlay */
     .admin-overlay {
       display: none;
       position: fixed;
@@ -448,99 +415,87 @@
       z-index: 3000;
       justify-content: center;
       align-items: center;
-      padding: 24px;
+      padding: 20px;
     }
     .admin-panel {
-      background: #111;
-      border: 1px solid var(--gold);
+      background: #111827;
+      border: 1px solid var(--gold-accent);
+      max-width: 700px;
       width: 100%;
-      max-width: 650px;
-      max-height: 90vh;
+      max-height: 85vh;
       overflow-y: auto;
-      padding: 32px;
-      border-radius: 4px;
+      padding: 28px;
+      border-radius: 20px;
     }
     .admin-panel .close {
       float: right;
       cursor: pointer;
-      color: var(--gold);
+      font-size: 24px;
+      color: var(--gold-accent);
     }
     .admin-tabs {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin: 24px 0;
+      margin: 20px 0;
     }
     .admin-tab {
       background: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-color);
       padding: 6px 16px;
-      color: var(--text);
+      color: var(--text-light);
       cursor: pointer;
     }
     .admin-tab.active {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-    .admin-content {
-      margin-top: 24px;
-    }
-    .admin-field {
-      margin-bottom: 16px;
-    }
-    .admin-field label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.8rem;
+      border-color: var(--gold-accent);
+      color: var(--gold-accent);
     }
     input, textarea, select {
       width: 100%;
-      background: #1a1a1a;
-      border: 1px solid var(--border);
+      background: #1f2937;
+      border: 1px solid var(--border-color);
       padding: 10px;
       color: white;
+      margin-bottom: 12px;
+      border-radius: 8px;
     }
     button {
-      background: var(--gold);
+      background: var(--gold-accent);
       border: none;
-      padding: 10px 20px;
-      color: black;
+      padding: 10px 18px;
       font-weight: bold;
       cursor: pointer;
+      border-radius: 6px;
     }
-
-    @media (max-width: 768px) {
-      .main-nav { display: none; }
-      .menu-btn { display: flex; }
-      section { padding: 60px 24px; }
-      .about-grid { grid-template-columns: 1fr; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.6s;
     }
-    @media (min-width: 769px) {
-      .mobile-nav, .menu-btn { display: none; }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 
-<!-- Splash -->
+<!-- splash -->
 <div id="splash">
-  <div class="splash-logo">SHARK<span>™</span></div>
+  <div class="splash-logo">SHARK</div>
   <div class="splash-line"></div>
-  <div style="margin-top: 20px; font-size: 0.8rem;">Mohamed El Sharkaway</div>
+  <div style="font-size:0.8rem;">Photographer · Designer</div>
 </div>
 
-<!-- Custom cursor -->
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
-
-<!-- Admin dot -->
 <div class="admin-dot" id="adminDot"></div>
 
-<!-- Desktop nav -->
+<!-- desktop nav -->
 <nav class="main-nav">
   <div class="logo">
-    <h1>SHARK<span style="color:var(--gold)">™</span></h1>
-    <div class="sub">CREATIVE STRATEGIST</div>
+    <h1>SHARK<span>™</span></h1>
+    <div class="sub">VISUAL STORYTELLER</div>
   </div>
   <div class="nav-links">
     <a href="#" data-nav="about">About</a>
@@ -551,240 +506,189 @@
   <button class="lang-btn" id="langToggle">🇪🇬 AR</button>
 </nav>
 
-<!-- Mobile hamburger -->
+<!-- mobile -->
 <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
 <div class="mobile-nav" id="mobileNav">
   <a href="#" data-nav="about">About</a>
   <a href="#" data-nav="work">Work</a>
   <a href="#" data-nav="cases">Cases</a>
   <a href="#" data-nav="contact">Contact</a>
-  <hr style="border-color:var(--border); margin: 10px 0;">
-  <button class="lang-btn" id="mobileLangToggle" style="background:transparent;">🌐 العربية</button>
+  <button class="lang-btn" id="mobileLangToggle">العربية</button>
 </div>
 
-<!-- Hero -->
+<!-- hero -->
 <section class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-label">CREATIVE MARKETING STRATEGIST</div>
-    <div class="hero-title">Mohamed <span>El Sharkaway</span></div>
-    <div class="hero-desc">5+ years across Egypt, UAE, KSA. Integrated creative: design, photography, video & strategy.</div>
-    <a href="#contact" class="hero-btn">START A PROJECT</a>
+  <div>
+    <h1>Mohamed <span class="gold">El Sharkaway</span></h1>
+    <p>Photographer & Graphic Designer — 5+ years capturing stories across Egypt, UAE & Saudi Arabia.<br>Government, sports, tourism & brand identity.</p>
+    <a href="#work" class="hero-btn">VIEW PORTFOLIO</a>
   </div>
 </section>
 
-<!-- About -->
+<!-- about with photo -->
 <section id="about">
-  <div class="section-sub">/ ABOUT</div>
-  <div class="section-title">Where strategy meets execution.</div>
+  <div class="section-sub">/ ABOUT ME</div>
   <div class="about-grid">
-    <div class="bio-card" id="bioEnglish">
-      <p>Self-taught Creative Marketing Strategist with a 360° view. Built and led teams, delivered for government and corporate brands across 3 countries. Every skill is self-taught – design, photo, video, strategy.</p>
-      <div class="skill-list" id="skillsContainer"></div>
+    <div class="about-photo">
+      <img src="https://picsum.photos/id/64/800/1000" alt="Mohamed El Sharkaway" id="profileImg">
     </div>
-    <div class="bio-card" id="bioArabic" dir="rtl" style="display:none;">
-      <p>استراتيجي تسويق إبداعي عصامي، رؤية 360°. بنى وقاد فرق التسويق، وشغل على مستوى حكومي ومؤسسي في 3 دول.</p>
-      <div class="skill-list" id="skillsArContainer"></div>
+    <div class="bio-card" id="bioEn">
+      <p>I'm a self-taught visual artist – photographer and graphic designer – with a passion for powerful imagery and clean design. Over 5 years, I've worked on government ceremonies, sports campaigns, tourism projects, and brand identities across 3 countries. I don't just take pictures; I tell stories.</p>
+      <div class="skill-list" id="skillsEn"></div>
+    </div>
+    <div class="bio-card" id="bioAr" style="display:none;" dir="rtl">
+      <p>مصور جرافيك ومصمم جرافيك عصامي، بخبرة تزيد عن 5 سنوات في مصر والإمارات والسعودية. عملت على تغطيات حكومية، حملات رياضية، سياحية، وهويات بصرية. الصورة عندي ليست مجرد ضغط على زر – إنها قصة.</p>
+      <div class="skill-list" id="skillsAr"></div>
     </div>
   </div>
 </section>
 
-<!-- Portfolio -->
+<!-- portfolio -->
 <section id="work">
   <div class="section-sub">/ PORTFOLIO</div>
-  <div class="section-title">Selected work.</div>
+  <div class="section-title">Selected <span>work.</span></div>
   <div class="port-tabs" id="portTabs"></div>
   <div id="portGrids"></div>
 </section>
 
-<!-- Case Studies -->
+<!-- case studies -->
 <section id="cases">
   <div class="section-sub">/ CASE STUDIES</div>
-  <div class="section-title">The brief. The insight. The result.</div>
+  <div class="section-title">Real impact.</div>
   <div class="case-grid" id="casesGrid"></div>
 </section>
 
-<!-- Testimonials -->
+<!-- testimonials -->
 <section id="testimonials">
   <div class="section-sub">/ TESTIMONIALS</div>
   <div class="section-title">What clients say.</div>
   <div class="testimonial-grid" id="testimonialsGrid"></div>
 </section>
 
-<!-- Contact -->
+<!-- contact -->
 <section id="contact">
-  <div class="section-sub">/ CONNECT</div>
-  <div class="section-title">Let's build together.</div>
+  <div class="section-sub">/ LET'S TALK</div>
+  <div class="section-title">Start your project.</div>
   <div style="max-width: 500px; margin-top: 40px;">
     <form id="contactForm">
-      <input type="text" placeholder="Name" id="contactName" required style="margin-bottom: 12px;">
-      <input type="email" placeholder="Email" id="contactEmail" required style="margin-bottom: 12px;">
-      <select id="contactService" style="margin-bottom: 12px;">
-        <option>Photography</option><option>Design</option><option>Video</option><option>Strategy</option>
+      <input type="text" placeholder="Full name" id="contactName" required>
+      <input type="email" placeholder="Email" id="contactEmail" required>
+      <select id="contactService">
+        <option>Photography</option><option>Graphic Design</option><option>Video / Montage</option><option>Brand Identity</option>
       </select>
-      <textarea rows="4" placeholder="Message" id="contactMsg" required style="margin-bottom: 12px;"></textarea>
+      <textarea rows="4" placeholder="Tell me about your project..." id="contactMsg" required></textarea>
       <button type="submit" style="width:100%;">SEND VIA WHATSAPP →</button>
     </form>
   </div>
 </section>
 
 <footer>
-  <div>© 2026 Mohamed El Sharkaway — Faiyum, Egypt / Global</div>
-  <div style="margin-top: 12px;">
-    <span id="footerSocial"></span>
-  </div>
+  <p>© 2026 Mohamed El Sharkaway — based in Egypt, available worldwide.</p>
+  <div style="margin-top: 12px;" id="footerLinks"></div>
 </footer>
 
-<!-- Admin Overlay -->
+<!-- admin overlay -->
 <div class="admin-overlay" id="adminOverlay">
   <div class="admin-panel">
     <span class="close" id="closeAdmin">&times;</span>
-    <h2 style="color:var(--gold);">ADMIN PANEL</h2>
+    <h2 style="color:var(--gold-accent)">ADMIN CONTROL</h2>
     <div class="admin-tabs" id="adminTabs"></div>
     <div id="adminContent"></div>
   </div>
 </div>
 
 <script>
-  // ---------- DATA STORAGE ----------
-  let portfolioData = {
-    photo: [], design: [], montage: [], gym: [], tourism: [], branding: []
-  };
-  let casesData = [];
-  let testimonialsData = [];
-  let socialLinks = {
-    whatsapp: "201069731026",
-    email: "hello@shark.com",
-    linkedin: "https://linkedin.com/in/shark",
-    instagram: "https://instagram.com/shark"
-  };
-  let bio = { en: "Self-taught Creative Marketing Strategist with a 360° view...", ar: "استراتيجي تسويق إبداعي عصامي..." };
-  let profileImage = "https://picsum.photos/id/64/800/1000"; // placeholder
+  // ---------- DATA (localStorage) ----------
+  let portfolio = { photo: [], design: [], video: [], gym: [] };
+  let cases = [];
+  let testimonials = [];
+  let social = { whatsapp: "201069731026", email: "hello@shark.com", linkedin: "https://linkedin.com/in/shark", instagram: "https://instagram.com/shark" };
+  let bio = { en: "I'm a self-taught visual artist – photographer and graphic designer...", ar: "مصور ومصمم جرافيك عصامي..." };
+  let profilePic = "https://picsum.photos/id/64/800/1000";
 
-  // Load from localStorage
-  function loadData() {
-    const p = localStorage.getItem('portfolio');
-    if(p) portfolioData = JSON.parse(p);
-    const c = localStorage.getItem('cases');
-    if(c) casesData = JSON.parse(c);
-    const t = localStorage.getItem('testimonials');
-    if(t) testimonialsData = JSON.parse(t);
-    const s = localStorage.getItem('social');
-    if(s) Object.assign(socialLinks, JSON.parse(s));
-    const b = localStorage.getItem('bio');
-    if(b) bio = JSON.parse(b);
+  function loadAll() {
+    const p = localStorage.getItem('portfolio'); if(p) portfolio = JSON.parse(p);
+    const c = localStorage.getItem('cases'); if(c) cases = JSON.parse(c);
+    const t = localStorage.getItem('testimonials'); if(t) testimonials = JSON.parse(t);
+    const s = localStorage.getItem('social'); if(s) social = JSON.parse(s);
+    const b = localStorage.getItem('bio'); if(b) bio = JSON.parse(b);
+    const pp = localStorage.getItem('profilePic'); if(pp) profilePic = pp;
   }
-  function saveData() {
-    localStorage.setItem('portfolio', JSON.stringify(portfolioData));
-    localStorage.setItem('cases', JSON.stringify(casesData));
-    localStorage.setItem('testimonials', JSON.stringify(testimonialsData));
-    localStorage.setItem('social', JSON.stringify(socialLinks));
+  function saveAll() {
+    localStorage.setItem('portfolio', JSON.stringify(portfolio));
+    localStorage.setItem('cases', JSON.stringify(cases));
+    localStorage.setItem('testimonials', JSON.stringify(testimonials));
+    localStorage.setItem('social', JSON.stringify(social));
     localStorage.setItem('bio', JSON.stringify(bio));
+    localStorage.setItem('profilePic', profilePic);
   }
 
-  // Render functions
-  let currentLang = 'en';
-  function toggleLanguage() {
-    currentLang = currentLang === 'en' ? 'ar' : 'en';
-    document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-    document.getElementById('bioEnglish').style.display = currentLang === 'en' ? 'block' : 'none';
-    document.getElementById('bioArabic').style.display = currentLang === 'ar' ? 'block' : 'none';
-    document.querySelectorAll('[data-lang]').forEach(el => el.style.display = 'none');
-    // Update all text manually (simplified: we just toggle visibility of some blocks)
-    renderPortfolio();
-    renderCases();
-    renderTestimonials();
-    renderFooterSocial();
-  }
-
+  // render portfolio
   function renderPortfolio() {
-    const sections = ['photo','design','montage','gym','tourism','branding'];
-    const titles = { photo:'Photography', design:'Design', montage:'Montage', gym:'Gym', tourism:'Tourism', branding:'Branding' };
-    const tabsContainer = document.getElementById('portTabs');
-    const gridsContainer = document.getElementById('portGrids');
-    tabsContainer.innerHTML = '';
-    gridsContainer.innerHTML = '';
-    sections.forEach((sec, idx) => {
+    const cats = { photo:'Photography', design:'Graphic Design', video:'Video/Montage', gym:'Gym Content' };
+    const tabsDiv = document.getElementById('portTabs');
+    const gridsDiv = document.getElementById('portGrids');
+    tabsDiv.innerHTML = ''; gridsDiv.innerHTML = '';
+    let first = true;
+    for (let [key, label] of Object.entries(cats)) {
       const btn = document.createElement('button');
-      btn.className = 'port-tab' + (idx===0 ? ' active' : '');
-      btn.textContent = titles[sec];
+      btn.className = 'port-tab' + (first ? ' active' : '');
+      btn.textContent = label;
       btn.onclick = () => {
         document.querySelectorAll('.port-tab').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         document.querySelectorAll('.port-section').forEach(g => g.style.display = 'none');
-        const target = document.getElementById(`port-${sec}`);
-        if(target) target.style.display = 'grid';
+        const sec = document.getElementById(`port-${key}`);
+        if(sec) sec.style.display = 'grid';
       };
-      tabsContainer.appendChild(btn);
-      const gridDiv = document.createElement('div');
-      gridDiv.id = `port-${sec}`;
-      gridDiv.className = 'port-section port-grid';
-      gridDiv.style.display = idx===0 ? 'grid' : 'none';
-      gridDiv.innerHTML = portfolioData[sec].map(item => `
+      tabsDiv.appendChild(btn);
+      const grid = document.createElement('div');
+      grid.id = `port-${key}`;
+      grid.className = 'port-section port-grid';
+      grid.style.display = first ? 'grid' : 'none';
+      grid.innerHTML = portfolio[key].map(item => `
         <div class="port-item" onclick="openLightbox(${JSON.stringify(item.media).replace(/"/g, '&quot;')}, 0)">
           <div class="port-thumb">
-            ${item.media[0].type === 'video' ? `<video src="${item.media[0].url}" muted loop autoplay></video>` : `<img src="${item.media[0].url}" loading="lazy">`}
+            ${item.media[0].type === 'video' ? `<video src="${item.media[0].url}" muted loop autoplay playsinline></video>` : `<img src="${item.media[0].url}" loading="lazy">`}
           </div>
           <div class="port-info">
-            <div class="port-cat">${titles[sec]}</div>
+            <div class="port-cat">${label}</div>
             <div class="port-title">${item.title}</div>
           </div>
         </div>
       `).join('');
-      gridsContainer.appendChild(gridDiv);
-    });
+      gridsDiv.appendChild(grid);
+      first = false;
+    }
   }
 
   function renderCases() {
     const grid = document.getElementById('casesGrid');
-    grid.innerHTML = casesData.map(c => `
-      <div class="case-card">
-        <div style="color:var(--gold)">${c.tag || 'CASE'}</div>
-        <h3 style="margin:12px 0">${c.title}</h3>
-        <p>${c.brief}</p>
-        <div style="display:flex; gap:6px; margin-top:16px;">${c.tags.map(t => `<span style="border:1px solid var(--border); padding:2px 8px;">${t}</span>`).join('')}</div>
-      </div>
-    `).join('');
+    if(grid) grid.innerHTML = cases.map(c => `<div class="case-card"><div style="color:var(--gold-accent)">${c.tag}</div><h3 style="margin:12px 0">${c.title}</h3><p>${c.brief}</p><div style="display:flex;gap:8px;margin-top:12px;">${c.tags.map(t=>`<span style="border:1px solid var(--border-color);padding:2px 10px;border-radius:20px;">${t}</span>`).join('')}</div></div>`).join('');
   }
-
   function renderTestimonials() {
     const grid = document.getElementById('testimonialsGrid');
-    grid.innerHTML = testimonialsData.map(t => `
-      <div class="testimonial-card">
-        <i>❝</i>
-        <p style="margin:12px 0">${t.quote}</p>
-        <div><strong>${t.name}</strong></div>
-        <div style="font-size:0.8rem; color:var(--gold)">${t.role}</div>
-      </div>
-    `).join('');
+    if(grid) grid.innerHTML = testimonials.map(t => `<div class="testimonial-card"><i style="color:var(--gold-accent)">“</i><p style="margin:12px 0">${t.quote}</p><strong>${t.name}</strong><div style="color:var(--steel-light)">${t.role}</div></div>`).join('');
+  }
+  function renderFooter() {
+    const div = document.getElementById('footerLinks');
+    div.innerHTML = `<a href="https://wa.me/${social.whatsapp}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">WhatsApp</a> | <a href="mailto:${social.email}" style="color:var(--gold-accent); margin:0 10px;">Email</a> | <a href="${social.linkedin}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">LinkedIn</a> | <a href="${social.instagram}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">Instagram</a>`;
   }
 
-  function renderFooterSocial() {
-    const footerDiv = document.getElementById('footerSocial');
-    if(footerDiv) {
-      footerDiv.innerHTML = `
-        <a href="https://wa.me/${socialLinks.whatsapp}" target="_blank" style="color:var(--gold); margin-right:16px;">WhatsApp</a>
-        <a href="mailto:${socialLinks.email}" style="color:var(--gold); margin-right:16px;">Email</a>
-        <a href="${socialLinks.linkedin}" target="_blank" style="color:var(--gold); margin-right:16px;">LinkedIn</a>
-        <a href="${socialLinks.instagram}" target="_blank" style="color:var(--gold);">Instagram</a>
-      `;
-    }
-  }
-
-  // Admin panel logic with password
+  // admin
   const ADMIN_PASS = "admin123";
   function openAdmin() {
-    const pwd = prompt("Enter admin password:");
+    const pwd = prompt("Admin password:");
     if(pwd === ADMIN_PASS) {
       document.getElementById('adminOverlay').style.display = 'flex';
       buildAdminUI();
     } else alert("Wrong password");
   }
-
   function buildAdminUI() {
-    const tabs = ['Projects','Social','Cases','Testimonials','Bio'];
-    const tabContainer = document.getElementById('adminTabs');
+    const tabs = ['Projects','Social','Cases','Testimonials','Bio','Photo'];
+    const container = document.getElementById('adminTabs');
     const contentDiv = document.getElementById('adminContent');
-    tabContainer.innerHTML = '';
+    container.innerHTML = '';
     tabs.forEach((tab,i) => {
       const btn = document.createElement('button');
       btn.className = 'admin-tab' + (i===0?' active':'');
@@ -794,150 +698,153 @@
         btn.classList.add('active');
         renderAdminTab(tab);
       };
-      tabContainer.appendChild(btn);
+      container.appendChild(btn);
     });
     renderAdminTab('Projects');
   }
-
   function renderAdminTab(tab) {
     const div = document.getElementById('adminContent');
     if(tab === 'Projects') {
-      div.innerHTML = `<div class="admin-field"><label>Section</label><select id="projSection"><option>photo</option><option>design</option><option>montage</option><option>gym</option><option>tourism</option><option>branding</option></select></div>
-      <div class="admin-field"><label>Title</label><input id="projTitle" placeholder="Project title"></div>
-      <div class="admin-field"><label>Media URLs (comma separated)</label><input id="projMedia" placeholder="https://...jpg, https://...mp4"></div>
-      <button id="addProjBtn">Add Project</button>
-      <hr><h4>Delete last project per section</h4><div><label>Section</label><select id="delSection"><option>photo</option><option>design</option><option>montage</option><option>gym</option><option>tourism</option><option>branding</option></select><button id="delLastBtn">Delete Last</button></div>`;
-      document.getElementById('addProjBtn').onclick = () => {
-        const sec = document.getElementById('projSection').value;
+      div.innerHTML = `<div><label>Section</label><select id="projSec"><option>photo</option><option>design</option><option>video</option><option>gym</option></select></div>
+      <div><label>Title</label><input id="projTitle" placeholder="Project title"></div>
+      <div><label>Media URLs (comma separated, images or videos)</label><input id="projMedia" placeholder="https://...jpg, https://...mp4"></div>
+      <button id="addProj">➕ Add Project</button>
+      <hr><h4>Delete last project from section</h4><select id="delSec"><option>photo</option><option>design</option><option>video</option><option>gym</option></select><button id="delLast">🗑️ Delete Last</button>`;
+      document.getElementById('addProj').onclick = () => {
+        const sec = document.getElementById('projSec').value;
         const title = document.getElementById('projTitle').value;
         const mediaRaw = document.getElementById('projMedia').value;
         if(!title || !mediaRaw) return;
         const media = mediaRaw.split(',').map(url => ({ url: url.trim(), type: url.includes('.mp4')||url.includes('mov') ? 'video' : 'image' }));
-        portfolioData[sec].push({ title, media });
-        saveData(); renderPortfolio();
+        portfolio[sec].push({ title, media });
+        saveAll(); renderPortfolio();
         alert('Project added');
       };
-      document.getElementById('delLastBtn').onclick = () => {
-        const sec = document.getElementById('delSection').value;
-        portfolioData[sec].pop();
-        saveData(); renderPortfolio();
+      document.getElementById('delLast').onclick = () => {
+        const sec = document.getElementById('delSec').value;
+        portfolio[sec].pop();
+        saveAll(); renderPortfolio();
         alert('Last deleted');
       };
     }
     if(tab === 'Social') {
-      div.innerHTML = `<div class="admin-field"><label>WhatsApp (numbers only)</label><input id="wa" value="${socialLinks.whatsapp}"></div>
-      <div class="admin-field"><label>Email</label><input id="em" value="${socialLinks.email}"></div>
-      <div class="admin-field"><label>LinkedIn URL</label><input id="li" value="${socialLinks.linkedin}"></div>
-      <div class="admin-field"><label>Instagram URL</label><input id="ig" value="${socialLinks.instagram}"></div>
+      div.innerHTML = `<div><label>WhatsApp (numbers only)</label><input id="wa" value="${social.whatsapp}"></div>
+      <div><label>Email</label><input id="em" value="${social.email}"></div>
+      <div><label>LinkedIn URL</label><input id="li" value="${social.linkedin}"></div>
+      <div><label>Instagram URL</label><input id="ig" value="${social.instagram}"></div>
       <button id="saveSocial">Save</button>`;
       document.getElementById('saveSocial').onclick = () => {
-        socialLinks = { whatsapp: document.getElementById('wa').value, email: document.getElementById('em').value, linkedin: document.getElementById('li').value, instagram: document.getElementById('ig').value };
-        saveData(); renderFooterSocial();
+        social = { whatsapp: document.getElementById('wa').value, email: document.getElementById('em').value, linkedin: document.getElementById('li').value, instagram: document.getElementById('ig').value };
+        saveAll(); renderFooter();
         alert('Social updated');
       };
     }
     if(tab === 'Cases') {
-      div.innerHTML = `<div class="admin-field"><label>Tag</label><input id="caseTag" placeholder="B2B · ROI"></div>
-      <div class="admin-field"><label>Title</label><input id="caseTitle"></div>
-      <div class="admin-field"><label>Brief</label><textarea id="caseBrief" rows="3"></textarea></div>
-      <div class="admin-field"><label>Tags (comma)</label><input id="caseTags" placeholder="Facebook, 11x ROAS"></div>
-      <button id="addCaseBtn">Add Case</button>`;
-      document.getElementById('addCaseBtn').onclick = () => {
-        const tag = document.getElementById('caseTag').value;
-        const title = document.getElementById('caseTitle').value;
-        const brief = document.getElementById('caseBrief').value;
-        const tagsRaw = document.getElementById('caseTags').value;
-        const tags = tagsRaw.split(',').map(s=>s.trim());
-        casesData.push({ tag, title, brief, tags });
-        saveData(); renderCases();
+      div.innerHTML = `<div><label>Tag</label><input id="caseTag" placeholder="ROI · Photography"></div>
+      <div><label>Title</label><input id="caseTitle"></div>
+      <div><label>Brief</label><textarea id="caseBrief" rows="3"></textarea></div>
+      <div><label>Tags (comma)</label><input id="caseTags" placeholder="Sports, Engagement +40%"></div>
+      <button id="addCase">Add Case</button>`;
+      document.getElementById('addCase').onclick = () => {
+        cases.push({ tag: document.getElementById('caseTag').value, title: document.getElementById('caseTitle').value, brief: document.getElementById('caseBrief').value, tags: document.getElementById('caseTags').value.split(',').map(s=>s.trim()) });
+        saveAll(); renderCases();
         alert('Case added');
       };
     }
     if(tab === 'Testimonials') {
-      div.innerHTML = `<div class="admin-field"><label>Quote</label><textarea id="testQuote" rows="2"></textarea></div>
-      <div class="admin-field"><label>Name</label><input id="testName"></div>
-      <div class="admin-field"><label>Role / Company</label><input id="testRole"></div>
-      <button id="addTestBtn">Add Testimonial</button>`;
-      document.getElementById('addTestBtn').onclick = () => {
-        testimonialsData.push({ quote: document.getElementById('testQuote').value, name: document.getElementById('testName').value, role: document.getElementById('testRole').value });
-        saveData(); renderTestimonials();
-        alert('Testimonial added');
+      div.innerHTML = `<div><label>Quote</label><textarea id="quote" rows="2"></textarea></div>
+      <div><label>Name</label><input id="name"></div>
+      <div><label>Role</label><input id="role"></div>
+      <button id="addTesti">Add Testimonial</button>`;
+      document.getElementById('addTesti').onclick = () => {
+        testimonials.push({ quote: document.getElementById('quote').value, name: document.getElementById('name').value, role: document.getElementById('role').value });
+        saveAll(); renderTestimonials();
+        alert('Added');
       };
     }
     if(tab === 'Bio') {
-      div.innerHTML = `<div class="admin-field"><label>Bio English</label><textarea id="bioEn" rows="3">${bio.en}</textarea></div>
-      <div class="admin-field"><label>Bio Arabic</label><textarea id="bioAr" rows="3">${bio.ar}</textarea></div>
-      <button id="saveBioBtn">Save Bio</button>`;
-      document.getElementById('saveBioBtn').onclick = () => {
-        bio.en = document.getElementById('bioEn').value;
-        bio.ar = document.getElementById('bioAr').value;
-        saveData();
-        document.getElementById('bioEnglish').querySelector('p').innerText = bio.en;
-        document.getElementById('bioArabic').querySelector('p').innerText = bio.ar;
-        alert('Bio updated');
+      div.innerHTML = `<div><label>Bio English</label><textarea id="bioEnTxt" rows="3">${bio.en}</textarea></div>
+      <div><label>Bio Arabic</label><textarea id="bioArTxt" rows="3">${bio.ar}</textarea></div>
+      <button id="saveBio">Save Bio</button>`;
+      document.getElementById('saveBio').onclick = () => {
+        bio.en = document.getElementById('bioEnTxt').value;
+        bio.ar = document.getElementById('bioArTxt').value;
+        saveAll();
+        document.getElementById('bioEn').querySelector('p').innerText = bio.en;
+        document.getElementById('bioAr').querySelector('p').innerText = bio.ar;
+        alert('Bio saved');
+      };
+    }
+    if(tab === 'Photo') {
+      div.innerHTML = `<div><label>Profile Picture URL (direct link)</label><input id="photoUrl" placeholder="https://...jpg" value="${profilePic}"></div>
+      <button id="updatePhoto">Update Photo</button>`;
+      document.getElementById('updatePhoto').onclick = () => {
+        const newUrl = document.getElementById('photoUrl').value;
+        if(newUrl) { profilePic = newUrl; saveAll(); document.getElementById('profileImg').src = profilePic; alert('Photo updated'); }
       };
     }
   }
 
   function openLightbox(media, idx) {
-    alert('Lightbox preview: ' + media[idx].url);
+    alert('Preview: ' + media[idx].url + '\n(Full lightbox can be implemented similarly to previous version)');
   }
 
-  // Smooth scroll + init
-  document.querySelectorAll('[data-nav]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = link.getAttribute('data-nav');
-      const el = document.getElementById(id);
-      if(el) el.scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('mobileNav')?.classList.remove('open');
-      document.getElementById('menuBtn')?.classList.remove('active');
-    });
-  });
+  // lang and navigation
+  let currentLang = 'en';
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en';
+    document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+    document.getElementById('bioEn').style.display = currentLang === 'en' ? 'block' : 'none';
+    document.getElementById('bioAr').style.display = currentLang === 'ar' ? 'block' : 'none';
+  }
 
-  document.getElementById('langToggle')?.addEventListener('click', toggleLanguage);
-  document.getElementById('mobileLangToggle')?.addEventListener('click', toggleLanguage);
+  // event listeners
+  document.getElementById('langToggle')?.addEventListener('click', toggleLang);
+  document.getElementById('mobileLangToggle')?.addEventListener('click', toggleLang);
+  document.getElementById('adminDot')?.addEventListener('click', openAdmin);
+  document.getElementById('closeAdmin')?.addEventListener('click', () => document.getElementById('adminOverlay').style.display = 'none');
+  document.querySelectorAll('[data-nav]').forEach(a => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = a.getAttribute('data-nav');
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('mobileNav')?.classList.remove('open');
+    document.getElementById('menuBtn')?.classList.remove('active');
+  }));
   document.getElementById('menuBtn')?.addEventListener('click', () => {
     document.getElementById('mobileNav').classList.toggle('open');
     document.getElementById('menuBtn').classList.toggle('active');
   });
-  document.getElementById('adminDot')?.addEventListener('click', openAdmin);
-  document.getElementById('closeAdmin')?.addEventListener('click', () => document.getElementById('adminOverlay').style.display = 'none');
   document.getElementById('contactForm')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('contactName').value;
     const msg = document.getElementById('contactMsg').value;
-    window.open(`https://wa.me/${socialLinks.whatsapp}?text=${encodeURIComponent(name+": "+msg)}`,'_blank');
+    window.open(`https://wa.me/${social.whatsapp}?text=${encodeURIComponent(name+": "+msg)}`,'_blank');
   });
 
   // cursor
-  const dot = document.querySelector('.cursor-dot');
-  const ring = document.querySelector('.cursor-ring');
+  const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
   window.addEventListener('mousemove', (e) => {
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
-    ring.style.left = e.clientX + 'px';
-    ring.style.top = e.clientY + 'px';
+    dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+    ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
   });
 
-  // Splash + reveal
+  // init
   window.addEventListener('load', () => {
-    setTimeout(() => document.getElementById('splash').classList.add('hide'), 1500);
-    loadData();
+    setTimeout(() => document.getElementById('splash').classList.add('hide'), 1200);
+    loadAll();
     renderPortfolio();
     renderCases();
     renderTestimonials();
-    renderFooterSocial();
-    document.getElementById('bioEnglish').querySelector('p').innerText = bio.en;
-    document.getElementById('bioArabic').querySelector('p').innerText = bio.ar;
-    const skills = ['Graphic Design','Photography','Video Editing','Strategy','B2B Marketing'];
-    const skillsContainer = document.getElementById('skillsContainer');
-    skillsContainer.innerHTML = skills.map(s => `<div class="skill">${s}</div>`).join('');
-    document.getElementById('skillsArContainer').innerHTML = skills.map(s => `<div class="skill">${s}</div>`).join('');
+    renderFooter();
+    document.getElementById('profileImg').src = profilePic;
+    document.getElementById('bioEn').querySelector('p').innerText = bio.en;
+    document.getElementById('bioAr').querySelector('p').innerText = bio.ar;
+    const skillsList = ['Photography','Graphic Design','Video Editing','Brand Identity','Sports Content','Tourism Photography'];
+    document.getElementById('skillsEn').innerHTML = skillsList.map(s => `<div class="skill">${s}</div>`).join('');
+    document.getElementById('skillsAr').innerHTML = skillsList.map(s => `<div class="skill">${s}</div>`).join('');
     // reveal observer
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.1 });
-    document.querySelectorAll('section, .bio-card, .port-item').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
+    const obs = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.1 });
+    document.querySelectorAll('section, .bio-card, .port-item, .case-card').forEach(el => { el.classList.add('reveal'); obs.observe(el); });
   });
 </script>
 </body>
