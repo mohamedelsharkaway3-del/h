@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Mohamed El Sharkaway — Photographer & Designer Portfolio</title>
-  <!-- Google Fonts: Poppins + Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -12,7 +11,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     :root {
       --bg-dark: #0b1120;
       --bg-card: #111827;
@@ -24,9 +22,7 @@
       --text-light: #f3f4f6;
       --text-dim: #9ca3af;
       --border-color: #1f2a3e;
-      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-
     body {
       background: var(--bg-dark);
       color: var(--text-light);
@@ -34,8 +30,6 @@
       overflow-x: hidden;
       line-height: 1.6;
     }
-
-    /* custom cursor */
     .cursor-dot, .cursor-ring {
       position: fixed;
       pointer-events: none;
@@ -58,8 +52,6 @@
       transform: translate(-50%, -50%);
       transition: 0.15s ease-out;
     }
-
-    /* splash */
     #splash {
       position: fixed;
       inset: 0;
@@ -96,8 +88,6 @@
     @keyframes lineGrow {
       to { transform: scaleX(1); }
     }
-
-    /* navigation */
     .main-nav {
       position: fixed;
       top: 0;
@@ -155,8 +145,6 @@
       background: rgba(201,160,61,0.1);
       border-color: var(--gold-accent);
     }
-
-    /* mobile menu */
     .menu-btn {
       display: none;
       background: none;
@@ -201,7 +189,6 @@
       color: var(--text-light);
       font-size: 1.2rem;
     }
-
     @media (max-width: 768px) {
       .main-nav { display: none; }
       .menu-btn { display: flex; }
@@ -210,8 +197,6 @@
     @media (min-width: 769px) {
       .mobile-nav, .menu-btn { display: none; }
     }
-
-    /* sections */
     section {
       padding: 100px 48px;
       max-width: 1280px;
@@ -233,8 +218,6 @@
       margin-bottom: 48px;
       text-transform: uppercase;
     }
-
-    /* hero */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -271,8 +254,49 @@
       background: var(--gold-accent);
       color: #0b1120;
     }
-
-    /* about with photo */
+    /* carousel */
+    .carousel-section {
+      padding: 0 48px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+    }
+    .carousel-slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+    .carousel-slide img, .carousel-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: var(--gold-accent);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 24px;
+      z-index: 10;
+    }
+    .carousel-btn.prev { left: 16px; }
+    .carousel-btn.next { right: 16px; }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -305,8 +329,6 @@
       border-radius: 40px;
       font-size: 0.75rem;
     }
-
-    /* portfolio tabs */
     .port-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -347,7 +369,6 @@
       border-color: var(--gold-accent);
     }
     .port-thumb {
-      aspect-ratio: 4/5;
       overflow: hidden;
     }
     .port-thumb img, .port-thumb video {
@@ -372,8 +393,6 @@
       font-weight: 600;
       margin-top: 6px;
     }
-
-    /* case & testimonials */
     .case-grid, .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -385,15 +404,12 @@
       padding: 24px;
       border: 1px solid var(--border-color);
     }
-
     footer {
       text-align: center;
       padding: 48px;
       border-top: 1px solid var(--border-color);
       color: var(--text-dim);
     }
-
-    /* admin */
     .admin-dot {
       position: fixed;
       bottom: 20px;
@@ -476,28 +492,33 @@
       opacity: 1;
       transform: translateY(0);
     }
+    .preview-img, .preview-vid {
+      margin-top: 8px;
+      max-width: 100%;
+      max-height: 150px;
+      border-radius: 8px;
+    }
+    .error-msg {
+      color: #ef4444;
+      font-size: 0.75rem;
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
-
-<!-- splash -->
 <div id="splash">
   <div class="splash-logo">SHARK</div>
   <div class="splash-line"></div>
   <div style="font-size:0.8rem;">Photographer · Designer</div>
 </div>
-
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 <div class="admin-dot" id="adminDot"></div>
 
-<!-- desktop nav -->
 <nav class="main-nav">
-  <div class="logo">
-    <h1>SHARK<span>™</span></h1>
-    <div class="sub">VISUAL STORYTELLER</div>
-  </div>
+  <div class="logo"><h1>SHARK<span>™</span></h1><div class="sub">VISUAL STORYTELLER</div></div>
   <div class="nav-links">
+    <a href="#" data-nav="home">Home</a>
     <a href="#" data-nav="about">About</a>
     <a href="#" data-nav="work">Work</a>
     <a href="#" data-nav="cases">Cases</a>
@@ -505,10 +526,9 @@
   </div>
   <button class="lang-btn" id="langToggle">🇪🇬 AR</button>
 </nav>
-
-<!-- mobile -->
 <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
 <div class="mobile-nav" id="mobileNav">
+  <a href="#" data-nav="home">Home</a>
   <a href="#" data-nav="about">About</a>
   <a href="#" data-nav="work">Work</a>
   <a href="#" data-nav="cases">Cases</a>
@@ -516,7 +536,15 @@
   <button class="lang-btn" id="mobileLangToggle">العربية</button>
 </div>
 
-<!-- hero -->
+<!-- Hero Carousel Section -->
+<div class="carousel-section" id="carouselSection">
+  <div class="carousel-container" id="carouselContainer">
+    <div class="carousel-slides" id="carouselSlides"></div>
+    <button class="carousel-btn prev" id="carouselPrev">❮</button>
+    <button class="carousel-btn next" id="carouselNext">❯</button>
+  </div>
+</div>
+
 <section class="hero" id="home">
   <div>
     <h1>Mohamed <span class="gold">El Sharkaway</span></h1>
@@ -525,25 +553,15 @@
   </div>
 </section>
 
-<!-- about with photo -->
 <section id="about">
   <div class="section-sub">/ ABOUT ME</div>
   <div class="about-grid">
-    <div class="about-photo">
-      <img src="https://picsum.photos/id/64/800/1000" alt="Mohamed El Sharkaway" id="profileImg">
-    </div>
-    <div class="bio-card" id="bioEn">
-      <p>I'm a self-taught visual artist – photographer and graphic designer – with a passion for powerful imagery and clean design. Over 5 years, I've worked on government ceremonies, sports campaigns, tourism projects, and brand identities across 3 countries. I don't just take pictures; I tell stories.</p>
-      <div class="skill-list" id="skillsEn"></div>
-    </div>
-    <div class="bio-card" id="bioAr" style="display:none;" dir="rtl">
-      <p>مصور جرافيك ومصمم جرافيك عصامي، بخبرة تزيد عن 5 سنوات في مصر والإمارات والسعودية. عملت على تغطيات حكومية، حملات رياضية، سياحية، وهويات بصرية. الصورة عندي ليست مجرد ضغط على زر – إنها قصة.</p>
-      <div class="skill-list" id="skillsAr"></div>
-    </div>
+    <div class="about-photo"><img src="https://picsum.photos/id/64/800/1000" alt="Mohamed El Sharkaway" id="profileImg"></div>
+    <div class="bio-card" id="bioEn"><p>Self-taught photographer & graphic designer. 5+ years experience across Egypt, UAE, Saudi Arabia. Worked with government entities, sports campaigns, tourism projects, and brand identities. I tell stories through visuals.</p><div class="skill-list" id="skillsEn"></div></div>
+    <div class="bio-card" id="bioAr" style="display:none;" dir="rtl"><p>مصور ومصمم جرافيك عصامي، خبرة 5+ سنوات في مصر والإمارات والسعودية. عملت مع جهات حكومية، حملات رياضية، سياحية، هويات بصرية. أحكي القصص بالصور.</p><div class="skill-list" id="skillsAr"></div></div>
   </div>
 </section>
 
-<!-- portfolio -->
 <section id="work">
   <div class="section-sub">/ PORTFOLIO</div>
   <div class="section-title">Selected <span>work.</span></div>
@@ -551,21 +569,18 @@
   <div id="portGrids"></div>
 </section>
 
-<!-- case studies -->
 <section id="cases">
   <div class="section-sub">/ CASE STUDIES</div>
   <div class="section-title">Real impact.</div>
   <div class="case-grid" id="casesGrid"></div>
 </section>
 
-<!-- testimonials -->
 <section id="testimonials">
   <div class="section-sub">/ TESTIMONIALS</div>
   <div class="section-title">What clients say.</div>
   <div class="testimonial-grid" id="testimonialsGrid"></div>
 </section>
 
-<!-- contact -->
 <section id="contact">
   <div class="section-sub">/ LET'S TALK</div>
   <div class="section-title">Start your project.</div>
@@ -573,38 +588,27 @@
     <form id="contactForm">
       <input type="text" placeholder="Full name" id="contactName" required>
       <input type="email" placeholder="Email" id="contactEmail" required>
-      <select id="contactService">
-        <option>Photography</option><option>Graphic Design</option><option>Video / Montage</option><option>Brand Identity</option>
-      </select>
+      <select id="contactService"><option>Photography</option><option>Graphic Design</option><option>Video / Montage</option><option>Brand Identity</option></select>
       <textarea rows="4" placeholder="Tell me about your project..." id="contactMsg" required></textarea>
       <button type="submit" style="width:100%;">SEND VIA WHATSAPP →</button>
     </form>
   </div>
 </section>
+<footer><p>© 2026 Mohamed El Sharkaway — based in Egypt, available worldwide.</p><div style="margin-top: 12px;" id="footerLinks"></div></footer>
 
-<footer>
-  <p>© 2026 Mohamed El Sharkaway — based in Egypt, available worldwide.</p>
-  <div style="margin-top: 12px;" id="footerLinks"></div>
-</footer>
-
-<!-- admin overlay -->
 <div class="admin-overlay" id="adminOverlay">
-  <div class="admin-panel">
-    <span class="close" id="closeAdmin">&times;</span>
-    <h2 style="color:var(--gold-accent)">ADMIN CONTROL</h2>
-    <div class="admin-tabs" id="adminTabs"></div>
-    <div id="adminContent"></div>
-  </div>
+  <div class="admin-panel"><span class="close" id="closeAdmin">&times;</span><h2 style="color:var(--gold-accent)">ADMIN CONTROL</h2><div class="admin-tabs" id="adminTabs"></div><div id="adminContent"></div></div>
 </div>
 
 <script>
-  // ---------- DATA (localStorage) ----------
+  // Data structures
   let portfolio = { photo: [], design: [], video: [], gym: [] };
   let cases = [];
   let testimonials = [];
   let social = { whatsapp: "201069731026", email: "hello@shark.com", linkedin: "https://linkedin.com/in/shark", instagram: "https://instagram.com/shark" };
-  let bio = { en: "I'm a self-taught visual artist – photographer and graphic designer...", ar: "مصور ومصمم جرافيك عصامي..." };
+  let bio = { en: "Self-taught photographer & graphic designer. 5+ years experience across Egypt, UAE, Saudi Arabia. Worked with government entities, sports campaigns, tourism projects, and brand identities. I tell stories through visuals.", ar: "مصور ومصمم جرافيك عصامي، خبرة 5+ سنوات في مصر والإمارات والسعودية. عملت مع جهات حكومية، حملات رياضية، سياحية، هويات بصرية. أحكي القصص بالصور." };
   let profilePic = "https://picsum.photos/id/64/800/1000";
+  let carouselItems = []; // each { url, type }
 
   function loadAll() {
     const p = localStorage.getItem('portfolio'); if(p) portfolio = JSON.parse(p);
@@ -613,6 +617,7 @@
     const s = localStorage.getItem('social'); if(s) social = JSON.parse(s);
     const b = localStorage.getItem('bio'); if(b) bio = JSON.parse(b);
     const pp = localStorage.getItem('profilePic'); if(pp) profilePic = pp;
+    const ci = localStorage.getItem('carouselItems'); if(ci) carouselItems = JSON.parse(ci);
   }
   function saveAll() {
     localStorage.setItem('portfolio', JSON.stringify(portfolio));
@@ -621,13 +626,57 @@
     localStorage.setItem('social', JSON.stringify(social));
     localStorage.setItem('bio', JSON.stringify(bio));
     localStorage.setItem('profilePic', profilePic);
+    localStorage.setItem('carouselItems', JSON.stringify(carouselItems));
   }
 
-  // render portfolio
+  // Helper: check if URL is image/video
+  function getMediaType(url) {
+    if (url.match(/\.(mp4|mov|webm|avi)$/i) || url.includes('drive.google.com/uc?export=view')) return 'video';
+    return 'image';
+  }
+  function isValidUrl(url) {
+    return url && (url.startsWith('http') || url.startsWith('https'));
+  }
+
+  // Render carousel
+  let currentCarouselIndex = 0;
+  function renderCarousel() {
+    const slidesDiv = document.getElementById('carouselSlides');
+    if (!slidesDiv) return;
+    if (!carouselItems.length) {
+      slidesDiv.innerHTML = '<div class="carousel-slide"><div style="background:#1e293b; height:100%; display:flex; align-items:center; justify-content:center; color:var(--gold-accent)">✨ Add media from Admin → Carousel ✨</div></div>';
+      return;
+    }
+    slidesDiv.innerHTML = carouselItems.map(item => `
+      <div class="carousel-slide">
+        ${item.type === 'video' ? `<video src="${item.url}" autoplay muted loop playsinline></video>` : `<img src="${item.url}" loading="lazy">`}
+      </div>
+    `).join('');
+    if (carouselItems.length > 1) {
+      document.getElementById('carouselPrev').style.display = 'block';
+      document.getElementById('carouselNext').style.display = 'block';
+    } else {
+      document.getElementById('carouselPrev').style.display = 'none';
+      document.getElementById('carouselNext').style.display = 'none';
+    }
+    currentCarouselIndex = 0;
+    updateCarouselTransform();
+  }
+  function updateCarouselTransform() {
+    const slides = document.getElementById('carouselSlides');
+    if (slides) slides.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+  }
+  function nextCarousel() { if(carouselItems.length) currentCarouselIndex = (currentCarouselIndex + 1) % carouselItems.length; updateCarouselTransform(); }
+  function prevCarousel() { if(carouselItems.length) currentCarouselIndex = (currentCarouselIndex - 1 + carouselItems.length) % carouselItems.length; updateCarouselTransform(); }
+  document.getElementById('carouselNext')?.addEventListener('click', nextCarousel);
+  document.getElementById('carouselPrev')?.addEventListener('click', prevCarousel);
+
+  // Render portfolio
   function renderPortfolio() {
     const cats = { photo:'Photography', design:'Graphic Design', video:'Video/Montage', gym:'Gym Content' };
     const tabsDiv = document.getElementById('portTabs');
     const gridsDiv = document.getElementById('portGrids');
+    if (!tabsDiv) return;
     tabsDiv.innerHTML = ''; gridsDiv.innerHTML = '';
     let first = true;
     for (let [key, label] of Object.entries(cats)) {
@@ -646,46 +695,30 @@
       grid.id = `port-${key}`;
       grid.className = 'port-section port-grid';
       grid.style.display = first ? 'grid' : 'none';
-      grid.innerHTML = portfolio[key].map(item => `
-        <div class="port-item" onclick="openLightbox(${JSON.stringify(item.media).replace(/"/g, '&quot;')}, 0)">
-          <div class="port-thumb">
+      grid.innerHTML = portfolio[key].map(item => {
+        const ratioClass = item.ratio || '4/5';
+        return `<div class="port-item" onclick="openLightbox(${JSON.stringify(item.media).replace(/"/g, '&quot;')}, 0)">
+          <div class="port-thumb" style="aspect-ratio: ${ratioClass}">
             ${item.media[0].type === 'video' ? `<video src="${item.media[0].url}" muted loop autoplay playsinline></video>` : `<img src="${item.media[0].url}" loading="lazy">`}
           </div>
-          <div class="port-info">
-            <div class="port-cat">${label}</div>
-            <div class="port-title">${item.title}</div>
-          </div>
-        </div>
-      `).join('');
+          <div class="port-info"><div class="port-cat">${label}</div><div class="port-title">${item.title}</div></div>
+        </div>`;
+      }).join('');
       gridsDiv.appendChild(grid);
       first = false;
     }
   }
+  function openLightbox(media, idx) { alert('Preview: ' + media[idx].url + '\n(Full lightbox can be added similarly)'); }
 
-  function renderCases() {
-    const grid = document.getElementById('casesGrid');
-    if(grid) grid.innerHTML = cases.map(c => `<div class="case-card"><div style="color:var(--gold-accent)">${c.tag}</div><h3 style="margin:12px 0">${c.title}</h3><p>${c.brief}</p><div style="display:flex;gap:8px;margin-top:12px;">${c.tags.map(t=>`<span style="border:1px solid var(--border-color);padding:2px 10px;border-radius:20px;">${t}</span>`).join('')}</div></div>`).join('');
-  }
-  function renderTestimonials() {
-    const grid = document.getElementById('testimonialsGrid');
-    if(grid) grid.innerHTML = testimonials.map(t => `<div class="testimonial-card"><i style="color:var(--gold-accent)">“</i><p style="margin:12px 0">${t.quote}</p><strong>${t.name}</strong><div style="color:var(--steel-light)">${t.role}</div></div>`).join('');
-  }
-  function renderFooter() {
-    const div = document.getElementById('footerLinks');
-    div.innerHTML = `<a href="https://wa.me/${social.whatsapp}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">WhatsApp</a> | <a href="mailto:${social.email}" style="color:var(--gold-accent); margin:0 10px;">Email</a> | <a href="${social.linkedin}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">LinkedIn</a> | <a href="${social.instagram}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">Instagram</a>`;
-  }
+  function renderCases() { const grid = document.getElementById('casesGrid'); if(grid) grid.innerHTML = cases.map(c => `<div class="case-card"><div style="color:var(--gold-accent)">${c.tag}</div><h3 style="margin:12px 0">${c.title}</h3><p>${c.brief}</p><div style="display:flex;gap:8px;margin-top:12px;">${c.tags.map(t=>`<span style="border:1px solid var(--border-color);padding:2px 10px;border-radius:20px;">${t}</span>`).join('')}</div></div>`).join(''); }
+  function renderTestimonials() { const grid = document.getElementById('testimonialsGrid'); if(grid) grid.innerHTML = testimonials.map(t => `<div class="testimonial-card"><i style="color:var(--gold-accent)">“</i><p style="margin:12px 0">${t.quote}</p><strong>${t.name}</strong><div style="color:var(--steel-light)">${t.role}</div></div>`).join(''); }
+  function renderFooter() { const div = document.getElementById('footerLinks'); if(div) div.innerHTML = `<a href="https://wa.me/${social.whatsapp}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">WhatsApp</a> | <a href="mailto:${social.email}" style="color:var(--gold-accent); margin:0 10px;">Email</a> | <a href="${social.linkedin}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">LinkedIn</a> | <a href="${social.instagram}" target="_blank" style="color:var(--gold-accent); margin:0 10px;">Instagram</a>`; }
 
-  // admin
+  // Admin
   const ADMIN_PASS = "admin123";
-  function openAdmin() {
-    const pwd = prompt("Admin password:");
-    if(pwd === ADMIN_PASS) {
-      document.getElementById('adminOverlay').style.display = 'flex';
-      buildAdminUI();
-    } else alert("Wrong password");
-  }
+  function openAdmin() { const pwd = prompt("Admin password:"); if(pwd === ADMIN_PASS) { document.getElementById('adminOverlay').style.display = 'flex'; buildAdminUI(); } else alert("Wrong password"); }
   function buildAdminUI() {
-    const tabs = ['Projects','Social','Cases','Testimonials','Bio','Photo'];
+    const tabs = ['Projects','Carousel','Social','Cases','Testimonials','Bio','Photo'];
     const container = document.getElementById('adminTabs');
     const contentDiv = document.getElementById('adminContent');
     container.innerHTML = '';
@@ -693,103 +726,96 @@
       const btn = document.createElement('button');
       btn.className = 'admin-tab' + (i===0?' active':'');
       btn.textContent = tab;
-      btn.onclick = () => {
-        document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderAdminTab(tab);
-      };
+      btn.onclick = () => { document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderAdminTab(tab); };
       container.appendChild(btn);
     });
     renderAdminTab('Projects');
   }
   function renderAdminTab(tab) {
     const div = document.getElementById('adminContent');
-    if(tab === 'Projects') {
+    if (tab === 'Projects') {
       div.innerHTML = `<div><label>Section</label><select id="projSec"><option>photo</option><option>design</option><option>video</option><option>gym</option></select></div>
       <div><label>Title</label><input id="projTitle" placeholder="Project title"></div>
-      <div><label>Media URLs (comma separated, images or videos)</label><input id="projMedia" placeholder="https://...jpg, https://...mp4"></div>
+      <div><label>Media URLs (comma separated, images or videos)</label><input id="projMedia" placeholder="https://i.ibb.co/xxx.jpg, https://..."></div>
+      <div id="projMediaPreview"></div>
+      <div><label>Aspect Ratio</label><select id="projRatio"><option value="1/1">1:1 Square</option><option value="4/5" selected>4:5 Portrait</option><option value="3/2">3:2 Classic</option><option value="16/9">16:9 Widescreen</option><option value="9/16">9:16 Story/Reel</option><option value="2/1">2:1 Panoramic</option><option value="5/4">5:4 Classic Portrait</option></select></div>
       <button id="addProj">➕ Add Project</button>
-      <hr><h4>Delete last project from section</h4><select id="delSec"><option>photo</option><option>design</option><option>video</option><option>gym</option></select><button id="delLast">🗑️ Delete Last</button>`;
+      <hr><h4>Delete last project</h4><select id="delSec"><option>photo</option><option>design</option><option>video</option><option>gym</option></select><button id="delLast">🗑️ Delete Last</button>`;
+      const mediaInput = document.getElementById('projMedia');
+      const previewDiv = document.getElementById('projMediaPreview');
+      mediaInput.addEventListener('input', () => {
+        const urls = mediaInput.value.split(',').map(s=>s.trim()).filter(s=>s);
+        if (urls.length && isValidUrl(urls[0])) {
+          const type = getMediaType(urls[0]);
+          previewDiv.innerHTML = type === 'video' ? `<video src="${urls[0]}" controls class="preview-vid"></video>` : `<img src="${urls[0]}" class="preview-img" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div class=\\'error-msg\\'>Invalid image URL</div>')">`;
+        } else if (urls.length) previewDiv.innerHTML = '<div class="error-msg">Invalid URL format</div>';
+        else previewDiv.innerHTML = '';
+      });
       document.getElementById('addProj').onclick = () => {
         const sec = document.getElementById('projSec').value;
         const title = document.getElementById('projTitle').value;
         const mediaRaw = document.getElementById('projMedia').value;
-        if(!title || !mediaRaw) return;
-        const media = mediaRaw.split(',').map(url => ({ url: url.trim(), type: url.includes('.mp4')||url.includes('mov') ? 'video' : 'image' }));
-        portfolio[sec].push({ title, media });
+        const ratio = document.getElementById('projRatio').value;
+        if (!title || !mediaRaw) { alert('Title and media required'); return; }
+        const media = mediaRaw.split(',').map(url => ({ url: url.trim(), type: getMediaType(url.trim()) }));
+        portfolio[sec].push({ title, media, ratio });
         saveAll(); renderPortfolio();
         alert('Project added');
       };
-      document.getElementById('delLast').onclick = () => {
-        const sec = document.getElementById('delSec').value;
-        portfolio[sec].pop();
-        saveAll(); renderPortfolio();
-        alert('Last deleted');
-      };
+      document.getElementById('delLast').onclick = () => { const sec = document.getElementById('delSec').value; portfolio[sec].pop(); saveAll(); renderPortfolio(); alert('Deleted last'); };
     }
-    if(tab === 'Social') {
-      div.innerHTML = `<div><label>WhatsApp (numbers only)</label><input id="wa" value="${social.whatsapp}"></div>
-      <div><label>Email</label><input id="em" value="${social.email}"></div>
-      <div><label>LinkedIn URL</label><input id="li" value="${social.linkedin}"></div>
-      <div><label>Instagram URL</label><input id="ig" value="${social.instagram}"></div>
-      <button id="saveSocial">Save</button>`;
-      document.getElementById('saveSocial').onclick = () => {
-        social = { whatsapp: document.getElementById('wa').value, email: document.getElementById('em').value, linkedin: document.getElementById('li').value, instagram: document.getElementById('ig').value };
-        saveAll(); renderFooter();
-        alert('Social updated');
+    if (tab === 'Carousel') {
+      div.innerHTML = `<div><label>Media URL (image or video)</label><input id="carouselUrl" placeholder="https://i.ibb.co/xxx.jpg or video link"></div>
+      <div id="carouselPreview"></div>
+      <button id="addCarousel">➕ Add to Carousel</button>
+      <hr><h4>Current Carousel Items</h4><div id="carouselList"></div>`;
+      const urlInput = document.getElementById('carouselUrl');
+      const previewDiv = document.getElementById('carouselPreview');
+      urlInput.addEventListener('input', () => {
+        const url = urlInput.value.trim();
+        if (url && isValidUrl(url)) {
+          const type = getMediaType(url);
+          previewDiv.innerHTML = type === 'video' ? `<video src="${url}" controls class="preview-vid"></video>` : `<img src="${url}" class="preview-img" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div class=\\'error-msg\\'>Invalid URL</div>')">`;
+        } else previewDiv.innerHTML = '';
+      });
+      document.getElementById('addCarousel').onclick = () => {
+        const url = document.getElementById('carouselUrl').value.trim();
+        if (!url || !isValidUrl(url)) { alert('Enter a valid URL'); return; }
+        const type = getMediaType(url);
+        carouselItems.push({ url, type });
+        saveAll(); renderCarousel(); renderCarouselList();
+        document.getElementById('carouselUrl').value = ''; previewDiv.innerHTML = '';
       };
+      const renderCarouselList = () => {
+        const listDiv = document.getElementById('carouselList');
+        listDiv.innerHTML = carouselItems.map((item, idx) => `<div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>${item.url.substring(0, 50)}...</span><button onclick="removeCarouselItem(${idx})">✖</button></div>`).join('');
+      };
+      window.removeCarouselItem = (idx) => { carouselItems.splice(idx,1); saveAll(); renderCarousel(); renderCarouselList(); };
+      renderCarouselList();
     }
-    if(tab === 'Cases') {
-      div.innerHTML = `<div><label>Tag</label><input id="caseTag" placeholder="ROI · Photography"></div>
-      <div><label>Title</label><input id="caseTitle"></div>
-      <div><label>Brief</label><textarea id="caseBrief" rows="3"></textarea></div>
-      <div><label>Tags (comma)</label><input id="caseTags" placeholder="Sports, Engagement +40%"></div>
-      <button id="addCase">Add Case</button>`;
-      document.getElementById('addCase').onclick = () => {
-        cases.push({ tag: document.getElementById('caseTag').value, title: document.getElementById('caseTitle').value, brief: document.getElementById('caseBrief').value, tags: document.getElementById('caseTags').value.split(',').map(s=>s.trim()) });
-        saveAll(); renderCases();
-        alert('Case added');
-      };
+    if (tab === 'Social') {
+      div.innerHTML = `<div><label>WhatsApp (numbers only)</label><input id="wa" value="${social.whatsapp}"></div><div><label>Email</label><input id="em" value="${social.email}"></div><div><label>LinkedIn URL</label><input id="li" value="${social.linkedin}"></div><div><label>Instagram URL</label><input id="ig" value="${social.instagram}"></div><button id="saveSocial">Save</button>`;
+      document.getElementById('saveSocial').onclick = () => { social = { whatsapp: document.getElementById('wa').value, email: document.getElementById('em').value, linkedin: document.getElementById('li').value, instagram: document.getElementById('ig').value }; saveAll(); renderFooter(); alert('Social updated'); };
     }
-    if(tab === 'Testimonials') {
-      div.innerHTML = `<div><label>Quote</label><textarea id="quote" rows="2"></textarea></div>
-      <div><label>Name</label><input id="name"></div>
-      <div><label>Role</label><input id="role"></div>
-      <button id="addTesti">Add Testimonial</button>`;
-      document.getElementById('addTesti').onclick = () => {
-        testimonials.push({ quote: document.getElementById('quote').value, name: document.getElementById('name').value, role: document.getElementById('role').value });
-        saveAll(); renderTestimonials();
-        alert('Added');
-      };
+    if (tab === 'Cases') {
+      div.innerHTML = `<div><label>Tag</label><input id="caseTag" placeholder="ROI · Photography"></div><div><label>Title</label><input id="caseTitle"></div><div><label>Brief</label><textarea id="caseBrief" rows="3"></textarea></div><div><label>Tags (comma)</label><input id="caseTags" placeholder="Sports, Engagement +40%"></div><button id="addCase">Add Case</button>`;
+      document.getElementById('addCase').onclick = () => { cases.push({ tag: document.getElementById('caseTag').value, title: document.getElementById('caseTitle').value, brief: document.getElementById('caseBrief').value, tags: document.getElementById('caseTags').value.split(',').map(s=>s.trim()) }); saveAll(); renderCases(); alert('Case added'); };
     }
-    if(tab === 'Bio') {
-      div.innerHTML = `<div><label>Bio English</label><textarea id="bioEnTxt" rows="3">${bio.en}</textarea></div>
-      <div><label>Bio Arabic</label><textarea id="bioArTxt" rows="3">${bio.ar}</textarea></div>
-      <button id="saveBio">Save Bio</button>`;
-      document.getElementById('saveBio').onclick = () => {
-        bio.en = document.getElementById('bioEnTxt').value;
-        bio.ar = document.getElementById('bioArTxt').value;
-        saveAll();
-        document.getElementById('bioEn').querySelector('p').innerText = bio.en;
-        document.getElementById('bioAr').querySelector('p').innerText = bio.ar;
-        alert('Bio saved');
-      };
+    if (tab === 'Testimonials') {
+      div.innerHTML = `<div><label>Quote</label><textarea id="quote" rows="2"></textarea></div><div><label>Name</label><input id="name"></div><div><label>Role</label><input id="role"></div><button id="addTesti">Add Testimonial</button>`;
+      document.getElementById('addTesti').onclick = () => { testimonials.push({ quote: document.getElementById('quote').value, name: document.getElementById('name').value, role: document.getElementById('role').value }); saveAll(); renderTestimonials(); alert('Added'); };
     }
-    if(tab === 'Photo') {
-      div.innerHTML = `<div><label>Profile Picture URL (direct link)</label><input id="photoUrl" placeholder="https://...jpg" value="${profilePic}"></div>
-      <button id="updatePhoto">Update Photo</button>`;
-      document.getElementById('updatePhoto').onclick = () => {
-        const newUrl = document.getElementById('photoUrl').value;
-        if(newUrl) { profilePic = newUrl; saveAll(); document.getElementById('profileImg').src = profilePic; alert('Photo updated'); }
-      };
+    if (tab === 'Bio') {
+      div.innerHTML = `<div><label>Bio English</label><textarea id="bioEnTxt" rows="3">${bio.en}</textarea></div><div><label>Bio Arabic</label><textarea id="bioArTxt" rows="3">${bio.ar}</textarea></div><button id="saveBio">Save Bio</button>`;
+      document.getElementById('saveBio').onclick = () => { bio.en = document.getElementById('bioEnTxt').value; bio.ar = document.getElementById('bioArTxt').value; saveAll(); document.getElementById('bioEn').querySelector('p').innerText = bio.en; document.getElementById('bioAr').querySelector('p').innerText = bio.ar; alert('Bio saved'); };
+    }
+    if (tab === 'Photo') {
+      div.innerHTML = `<div><label>Profile Picture URL (direct link)</label><input id="photoUrl" placeholder="https://..." value="${profilePic}"></div><button id="updatePhoto">Update Photo</button>`;
+      document.getElementById('updatePhoto').onclick = () => { const newUrl = document.getElementById('photoUrl').value; if(newUrl && isValidUrl(newUrl)) { profilePic = newUrl; saveAll(); document.getElementById('profileImg').src = profilePic; alert('Photo updated'); } else alert('Invalid URL'); };
     }
   }
 
-  function openLightbox(media, idx) {
-    alert('Preview: ' + media[idx].url + '\n(Full lightbox can be implemented similarly to previous version)');
-  }
-
-  // lang and navigation
+  // Language & navigation
   let currentLang = 'en';
   function toggleLang() {
     currentLang = currentLang === 'en' ? 'ar' : 'en';
@@ -797,41 +823,23 @@
     document.getElementById('bioEn').style.display = currentLang === 'en' ? 'block' : 'none';
     document.getElementById('bioAr').style.display = currentLang === 'ar' ? 'block' : 'none';
   }
-
-  // event listeners
   document.getElementById('langToggle')?.addEventListener('click', toggleLang);
   document.getElementById('mobileLangToggle')?.addEventListener('click', toggleLang);
   document.getElementById('adminDot')?.addEventListener('click', openAdmin);
   document.getElementById('closeAdmin')?.addEventListener('click', () => document.getElementById('adminOverlay').style.display = 'none');
-  document.querySelectorAll('[data-nav]').forEach(a => a.addEventListener('click', (e) => {
-    e.preventDefault();
-    const id = a.getAttribute('data-nav');
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('mobileNav')?.classList.remove('open');
-    document.getElementById('menuBtn')?.classList.remove('active');
-  }));
-  document.getElementById('menuBtn')?.addEventListener('click', () => {
-    document.getElementById('mobileNav').classList.toggle('open');
-    document.getElementById('menuBtn').classList.toggle('active');
-  });
-  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('contactName').value;
-    const msg = document.getElementById('contactMsg').value;
-    window.open(`https://wa.me/${social.whatsapp}?text=${encodeURIComponent(name+": "+msg)}`,'_blank');
-  });
+  document.querySelectorAll('[data-nav]').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); const id = a.getAttribute('data-nav'); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); document.getElementById('mobileNav')?.classList.remove('open'); document.getElementById('menuBtn')?.classList.remove('active'); }));
+  document.getElementById('menuBtn')?.addEventListener('click', () => { document.getElementById('mobileNav').classList.toggle('open'); document.getElementById('menuBtn').classList.toggle('active'); });
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('contactName').value; const msg = document.getElementById('contactMsg').value; window.open(`https://wa.me/${social.whatsapp}?text=${encodeURIComponent(name+": "+msg)}`,'_blank'); });
 
-  // cursor
+  // Cursor
   const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
-  window.addEventListener('mousemove', (e) => {
-    dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
-    ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
-  });
+  window.addEventListener('mousemove', (e) => { dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px'; ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; });
 
-  // init
+  // Init
   window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('splash').classList.add('hide'), 1200);
     loadAll();
+    renderCarousel();
     renderPortfolio();
     renderCases();
     renderTestimonials();
@@ -842,7 +850,6 @@
     const skillsList = ['Photography','Graphic Design','Video Editing','Brand Identity','Sports Content','Tourism Photography'];
     document.getElementById('skillsEn').innerHTML = skillsList.map(s => `<div class="skill">${s}</div>`).join('');
     document.getElementById('skillsAr').innerHTML = skillsList.map(s => `<div class="skill">${s}</div>`).join('');
-    // reveal observer
     const obs = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold: 0.1 });
     document.querySelectorAll('section, .bio-card, .port-item, .case-card').forEach(el => { el.classList.add('reveal'); obs.observe(el); });
   });
